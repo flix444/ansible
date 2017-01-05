@@ -3,6 +3,9 @@
   remote_user: felix
   sudo: yes
   tasks:
+  - name: install vim 
+    yum: name=vim state=latest
   - name: update all
     yum: name=* state=latest
+
 ...
