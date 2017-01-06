@@ -5,7 +5,18 @@
   tasks:
   - name: install vim 
     yum: name=vim state=latest
-  - name: update all
-    yum: name=* state=latest
-
+  - name: install mailx 
+    yum: name=mailx state=latest
+  - name: install bash-completion
+    yum: name=bash-completion state=latest
+ 
+  - name:   install httpd 
+    yum:    name=httpd state=latest
+    notify: 
+     - restart apache
+  - name:   start httpd 
+    service: name=httpd state=started
+  handlers:
+  - name: restart apache
+    service: name=httpd state=restarted
 ...
