@@ -10,12 +10,15 @@
   - name: install bash-completion
     yum: name=bash-completion state=latest
  
-  - name:   install httpd 
-    yum:    name=httpd state=latest
+  - name: install httpd 
+    yum: name=httpd state=latest
     notify: 
      - restart apache
-  - name:   start httpd 
-    service: name=httpd state=started
+  - name: start httpd 
+    service: name=httpd state=started enabled=yes
+  - name: start firewalld
+    service: name=firewalld state=started enabled=yes
+  - name: install 
   handlers:
   - name: restart apache
     service: name=httpd state=restarted
